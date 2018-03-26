@@ -1,6 +1,6 @@
 {
     "name": "pablosanches/form-builder",
-    "description": "A simple library to turn easy you form building. Teste",
+    "description": "A simple library to turn easy you form building.",
     "type": "library",
     "license": "MIT",
     "minimum-stability": "stable",
