@@ -2,6 +2,8 @@
 
 A simple library to turn easy you form building.
 
+[![Build Status](https://travis-ci.org/pablosanches/form-builder.svg?branch=master)](https://travis-ci.org/pablosanches/form-builder)
+
 ## Working with the form builder
 
 The process for creating a form is simple:
