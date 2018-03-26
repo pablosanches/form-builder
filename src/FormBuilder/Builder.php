@@ -181,6 +181,17 @@ class Builder
 
 		return $this;
 	}
+	
+	/**
+	 * Get input by slug
+	 *
+	 * @param $slug
+	 *
+	 * @return array
+	 */	
+	public function getInput($slug) {
+		return $this->inputs[$slug];
+	}
 
 	/**
 	 * Add multiple inputs to the input queue
@@ -213,7 +224,7 @@ class Builder
 	 *
 	 * @return string
 	 */
-	public function buildForm($echo = true)
+	public function buildForm($echo = false)
 	{
 		$output = '';
 
@@ -252,7 +263,7 @@ class Builder
 
 		// Add honeypot anti-spam field
 		if ($this->form['add_honeypot']) {
-			$this->add_input( 'Leave blank to submit', array(
+			$this->addInput('Leave blank to submit', array(
 				'name'             => 'honeypot',
 				'slug'             => 'honeypot',
 				'id'               => 'form_honeypot',
@@ -362,7 +373,7 @@ class Builder
 							) {
 								$end .= ' checked';
 							}
-							$end .= $this->field_close();
+							$end .= $this->fieldClose();
 							$end .= ' <label for="' . $slug . '">' . $opt . '</label>';
 						}
 
@@ -374,7 +385,7 @@ class Builder
 					$element = 'input';
 					$end .= ' type="' . $value['type'] . '" value="' . $value['value'] . '"';
 					$end .= $value['checked'] ? ' checked' : '';
-					$end .= $this->field_close();
+					$end .= $this->fieldClose();
 				break;
 			}
 
@@ -443,7 +454,7 @@ class Builder
 				$wrap_before = $value['before_html'];
 				if (!empty( $value['wrap_tag'])) {
 					$wrap_before .= '<' . $value['wrap_tag'];
-					$wrap_before .= count( $value['wrap_class'] ) > 0 ? $this->_output_classes( $value['wrap_class'] ) : '';
+					$wrap_before .= count( $value['wrap_class'] ) > 0 ? $this->outputClass( $value['wrap_class'] ) : '';
 					$wrap_before .= ! empty( $value['wrap_style'] ) ? ' style="' . $value['wrap_style'] . '"' : '';
 					$wrap_before .= ! empty( $value['wrap_id'] ) ? ' id="' . $value['wrap_id'] . '"' : '';
 					$wrap_before .= '>';

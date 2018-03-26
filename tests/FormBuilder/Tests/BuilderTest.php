@@ -15,4 +15,28 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 
         return $builder;
     }
+
+    /**
+     * @depends testInitialize
+     * @return FormBuilder\Builder $builder
+     */
+    public function testAddInput($builder)
+    {
+        $builder->addInput('Nome', [
+            'request_populate' => false
+        ], 'contact_name');
+
+        $input = $builder->getInput('contact_name');
+        $this->assertEquals('contact_name', $input['name']);
+    }
+
+    /**
+     * @depends testInitialize
+     * @return FormBuilder\Builder $builder
+     */
+    public function testBuild($builder)
+    {
+        $output = $builder->buildForm();
+        $this->assertNotEmpty($output);
+    }    
 }
